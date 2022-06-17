@@ -1,0 +1,22 @@
+/* unvisited link */
+a:link {
+    color: White;
+    text-decoration: none;
+    font-size: large;
+    border-radius: 2px solid white;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: White;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: White;
+  }
+  
+  /* selected link */
+  a:active {
+    color: White;
+  }
