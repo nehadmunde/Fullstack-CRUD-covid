@@ -1,5 +1,6 @@
 const userModel=require('../model/UserModel');
 const bcrypt=require('bcrypt');
+const multer=require('multer');
 const jwt=require('jsonwebtoken');
 // const JWT_SECURITY_KEY=process.env.JWT_SECURITY_KEY || "jhkhggcghh"
 
@@ -121,6 +122,33 @@ static searchUser=async(req,res)=>{
         console.log(err);
     }
    }
+   
+   static sortUserByName=async(req,res)=>{
+        try{
+            let sortedData=await userModel.find({}).sort({name:req.query.num,email:req.query.email});
+            
+           res.send(sortedData)
+           
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+ 
+   
+  
+
+    // static uploadFile=async(req,res)=>{
+    //     try{
+         
+    //        res.send("File Uploaded SUcessful.")
+    //     }catch(err){
+    //         console.log(err);
+    //     }
+    // }
+   
 }
 
-module.exports=userControll;
+
+
+module.exports= userControll;

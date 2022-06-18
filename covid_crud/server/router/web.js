@@ -1,4 +1,9 @@
 const express=require("express");
+//File upload
+//const path=require("path")
+//var multipart = require('connect-multiparty');
+//const fileuploadrouter=require("./routes/fileupload.routes");
+//var multipartMiddleware = multipart({ uploadDir: path.join(__dirname,"uploads") });
 
 const router=express.Router();
 const patientController=require('../controller/patientController');
@@ -46,5 +51,13 @@ router.delete('/userDelete/:id',userController.deleteUser);
 router.get('/userSearch/:key',userController.searchUser);
 
 // in thunder : http://localhost:9001/covid_patient/userSearch/u  ==> get
+
+//  router.post("/upload",upload,userController.uploadFile);
+//router.post("/upload",multipartMiddleware,userController.fileuploadrouter);
+
+// sorting by Name 
+router.get('/userSort',userController.sortUserByName);
+//in thunder : http://localhost:9001/covid_patient/userSort  ==> get
+
 
 module.exports=router;

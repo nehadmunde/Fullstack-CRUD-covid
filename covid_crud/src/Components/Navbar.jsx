@@ -44,7 +44,12 @@ const Navbar=()=>{
           <Link to="/userTable">User Details</Link>
           </a>
         </li>
-        
+        {/* <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/uploadImage">
+          <Link to="/uploadImage">Upload Image</Link>
+          </a>
+        </li> */}
+
       </ul>
       
     </div>

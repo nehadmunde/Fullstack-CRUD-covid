@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useMemo} from 'react';
 
 const UserTable=()=>{
     const [data, setData] = useState([]);
@@ -9,7 +9,9 @@ const UserTable=()=>{
        name:"",
        email:""
      });
-
+     const [sort,setSort] = useState(1);
+     const [emailSort,setEMailSort] = useState(1);
+ 
      useEffect(()=>{
        axios.get('http://localhost:9001/covid_patient/user')
        .then(res=>{
@@ -19,6 +21,7 @@ const UserTable=()=>{
        })
      },[flag,updateData])
 
+    
      const changeHandler=(event)=>{
       setUpdateData({...updateData,[event.target.name]:event.target.value});
      }
@@ -67,6 +70,41 @@ const UserTable=()=>{
       })
      }
 
+    //name sort
+     const sortHandle=async()=>{
+      if(sort===1)
+      {
+        setSort(-1);
+      }
+      else{
+        setSort(1);
+      }
+      await axios.get(`http://localhost:9001/covid_patient/userSort/?num=${sort}`)
+      .then(res=>{
+        setData(res.data);
+        console.log(res.data);
+      }).catch(err=>{
+        console.log(err)
+      })
+     }
+  // email sort
+          const sortEmailHandle=async()=>{
+      if(sort===1)
+      {
+        setEMailSort(-1);
+      }
+      else{
+        setEMailSort(1);
+      }
+      await axios.get(`http://localhost:9001/covid_patient/userSort/?email=${emailSort}`)
+      .then(res=>{
+        setData(res.data);
+        console.log(res.data);
+      }).catch(err=>{
+        console.log(err)
+      })
+     }
+
     return(
       <div className='conatiner'>
      <div className='row'>
@@ -80,8 +118,8 @@ const UserTable=()=>{
             <thead>
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
+                <th scope="col" onClick={sortHandle}>Name</th>
+                <th scope="col" onClick={sortEmailHandle}>Email</th>
                 {/* <th scope="col">tc</th> */}
                 <th scope="col">Update</th>
                 <th scope="col">Delete</th>
@@ -115,6 +153,9 @@ const UserTable=()=>{
               }
             </tbody>
           </table>
+
+
+
     </div>
     </form>
      </div>
