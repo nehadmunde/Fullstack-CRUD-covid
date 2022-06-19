@@ -18,6 +18,7 @@ const Table=()=>{
     dose:""
   });
  const [key,setKey]=useState();
+ 
   useEffect(()=>{
     axios.get("http://localhost:9001/covid_patient").then(res=>{
        setData(res.data);

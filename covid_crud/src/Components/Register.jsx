@@ -17,11 +17,9 @@ const changeHandler=(event)=>{
 }
 
 const onSubmitClick=async()=>{
-  await axios.post('http://localhost:9001/covid_paitient',pDetails)
+  await axios.post('http://localhost:9001/covid_patient',pDetails)
   .then((res)=>{
-    // console.log(res)
   setPData(res)
-  // console.log("data from post",pData)
   }).catch(err=>{
     console.log(err);
   })

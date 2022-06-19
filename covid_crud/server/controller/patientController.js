@@ -1,7 +1,6 @@
 const res=require('express/lib/response');
 const patientModel=require('../model/patientModel');
 
-
 class patientController{
 
     //get controller 
@@ -86,7 +85,7 @@ class patientController{
         let newData= await patientModel.find({
             "$or":[
                  {name:{$regex:req.params.key}},
-                //  {age:Number({$regex:req.params.key})},
+                // {age:Number({$regex:req.params.key})},
                  {adharCard:{$regex:req.params.key}},
                  {dose:{$regex:req.params.key}},
             ]
@@ -96,7 +95,7 @@ class patientController{
         console.log(err);
     }
    }
-
+ 
 }
 
 module.exports=patientController;

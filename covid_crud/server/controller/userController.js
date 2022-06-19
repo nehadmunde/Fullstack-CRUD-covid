@@ -124,8 +124,10 @@ static searchUser=async(req,res)=>{
    }
    
    static sortUserByName=async(req,res)=>{
+    console.log(req.query.num)
         try{
-            let sortedData=await userModel.find({}).sort({name:req.query.num,email:req.query.email});
+            let sortedData=await userModel.find({}).sort({name:parseInt(req.query.num)});
+            //let sortedData=await userModel.find({}).sort({name:parseInt(req.query.num),email:parseInt(req.query.email)});
             
            res.send(sortedData)
            
@@ -133,6 +135,7 @@ static searchUser=async(req,res)=>{
             console.log(err);
         }
     }
+
 
  
    

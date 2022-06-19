@@ -1,9 +1,4 @@
 const express=require("express");
-//File upload
-//const path=require("path")
-//var multipart = require('connect-multiparty');
-//const fileuploadrouter=require("./routes/fileupload.routes");
-//var multipartMiddleware = multipart({ uploadDir: path.join(__dirname,"uploads") });
 
 const router=express.Router();
 const patientController=require('../controller/patientController');
@@ -24,9 +19,11 @@ router.put('/edit/:id',patientController.updatePatient);
 router.delete('/delete/:id',patientController.deletePatient);
 // in thunder : http://localhost:9001/covid_paitient/delete/62a8d5b34cefd4a5bb187d81 ==> delete
 
- router.get('/search/:key',patientController.searchPatient);
+ router.get('/paitentsearch/:key',patientController.searchPatient);
 
-// in thunder : http://localhost:9001/covid_patient/search/u  ==> get
+// in thunder : http://localhost:9001/covid_patient/paitentsearch/u  ==> get
+
+
 
 // =========>  rotes for user
 
@@ -52,7 +49,7 @@ router.get('/userSearch/:key',userController.searchUser);
 
 // in thunder : http://localhost:9001/covid_patient/userSearch/u  ==> get
 
-//  router.post("/upload",upload,userController.uploadFile);
+  //router.post("/upload",upload,userController.uploadFile);
 //router.post("/upload",multipartMiddleware,userController.fileuploadrouter);
 
 // sorting by Name 

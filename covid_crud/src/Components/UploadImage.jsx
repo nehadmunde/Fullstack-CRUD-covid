@@ -8,11 +8,12 @@ const UploadImage=()=>{
     const onUploadBtn=()=>{
         const formData=new FormData();
         formData.append("file",img);
-        formData.append("upload_preset","ml_default");
+        //formData.append("upload_preset","ml_default");
 
-        axios.post("https://cloudinary.com/v1_1/djx8oemno/image/upload",formData)
+        axios.post("http://localhost:9001/upload/fileUpload",formData)
         .then(res=>{
             console.log(res);
+            alert("File Uploaded Sucessfully.");
         }).catch((err)=>{
             console.log(err);
         })
